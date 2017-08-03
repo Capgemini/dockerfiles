@@ -1,15 +1,7 @@
 # Project Name
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-TODO: Write a project description
-
-## Installation
-
-TODO: Describe the installation process
-
-## Usage
-
-TODO: Write usage instructions
+A series of docker files used to build docker images.
 
 
 ## Contributing
@@ -22,7 +14,5 @@ TODO: Write usage instructions
 * Submit a pull request :D
 
 ## Credits
-
-TODO: Write credits if you've taken ideas from others
 
 [License Badges](https://gist.github.com/lukas-h/2a5d00690736b4c3a7ba)
