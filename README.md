@@ -3,9 +3,11 @@
 
 A series of docker files used to build docker images.
 
-## net-build
+### net-build
 
-A windows container, based on the [microsoft/windowsservercore](https://hub.docker.com/r/microsoft/windowsservercore/), with additional build components. For further information, refer to the readme.md.
+[![Build status](https://ci.appveyor.com/api/projects/status/o1htrkmkr9mffd4l/branch/master?svg=true)](https://ci.appveyor.com/project/jsacapdev/dockerfiles/branch/master)
+
+A windows container, based on the [microsoft/windowsservercore](https://hub.docker.com/r/microsoft/windowsservercore/) container, with additional build components. Documentation can be found [here] (https://github.com/Capgemini/dockerfiles/tree/master/net-build).
 
 ## Contributing
 

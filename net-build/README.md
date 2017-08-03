@@ -1,11 +1,22 @@
 # Project Name
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A series of docker files used to build docker images.
+A base windows container containing:
 
-## net-build
+* NET Framework
+* NET Core
+* Msbuild 
+* NuGet
+
+## Additional Information
 
 A windows container, based on the [microsoft/windowsservercore](https://hub.docker.com/r/microsoft/windowsservercore/), with additional build components. For further information, refer to the readme.md.
+
+## Build Status
+
+Build System                   | Host    | Build Agent  | Status
+-------------------------------|---------|--------------|-------------------------
+AppVeyor                       | Windows |     Cloud    | [![Build status](https://ci.appveyor.com/api/projects/status/o1htrkmkr9mffd4l/branch/master?svg=true)](https://ci.appveyor.com/project/jsacapdev/dockerfiles/branch/master)
 
 ## Contributing
 
