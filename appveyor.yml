@@ -1,0 +1,11 @@
+version: 1.0.{build}
+image: Visual Studio 2017
+
+install:
+  - ps: Write-Host Server version $(gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').BuildLabEx
+  - docker version
+
+build_script:
+  - ps: .\build.ps1
+
+test: off

@@ -1,4 +1,4 @@
-# Project Name
+# dockerfiles
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A series of docker files used to build docker images.
@@ -7,7 +7,7 @@ A series of docker files used to build docker images.
 
 [![Build status](https://ci.appveyor.com/api/projects/status/o1htrkmkr9mffd4l/branch/master?svg=true)](https://ci.appveyor.com/project/jsacapdev/dockerfiles/branch/master)
 
-A windows container, based on the [microsoft/windowsservercore](https://hub.docker.com/r/microsoft/windowsservercore/) container, with additional build components. Documentation can be found [here] (https://github.com/Capgemini/dockerfiles/tree/master/net-build).
+A windows container, based on the [microsoft/windowsservercore](https://hub.docker.com/r/microsoft/windowsservercore/) container, with additional build components. Documentation can be found [here](https://github.com/Capgemini/dockerfiles/tree/master/net-build).
 
 ## Contributing
 

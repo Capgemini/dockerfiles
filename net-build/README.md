@@ -1,5 +1,7 @@
-# Project Name
+# net-build
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Additional Information
 
 A base windows container containing:
 
@@ -7,10 +9,6 @@ A base windows container containing:
 * NET Core
 * Msbuild 
 * NuGet
-
-## Additional Information
-
-A windows container, based on the [microsoft/windowsservercore](https://hub.docker.com/r/microsoft/windowsservercore/), with additional build components. For further information, refer to the readme.md.
 
 ## Build Status
 
