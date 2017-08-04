@@ -8,4 +8,8 @@ install:
 build_script:
   - ps: .\build.ps1
 
-test: off
+test_script:
+  - ps: .\test.ps1
+
+deploy_script:
+  - ps: .\deploy.ps1
