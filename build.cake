@@ -58,7 +58,7 @@ Task("BuildInfo")
                 Id: {5}
                 Number: {6}
                 Version: {7}
-                IsTag: {8}
+                Commit: {8}
                 Tag Name: {9}",
                 TravisCI.Environment.Build.Branch,
                 TravisCI.Environment.Build.BuildDirectory,
