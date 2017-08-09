@@ -1,0 +1,6 @@
+language: csharp
+sudo: required
+dist: trusty
+
+script:
+- bash ./build.sh
