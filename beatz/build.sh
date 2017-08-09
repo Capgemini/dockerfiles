@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-echo built!
-echo built!
-echo built!
+docker pull microsoft/dotnet:latest
+
+docker build -t beatz -f Dockerfile .
+
+docker images

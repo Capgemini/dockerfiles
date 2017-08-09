@@ -2,5 +2,8 @@ language: csharp
 sudo: required
 dist: trusty
 
+services:
+- docker
+
 script:
 - bash ./build.sh
