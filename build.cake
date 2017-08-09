@@ -41,7 +41,7 @@ Task("BuildInfo")
                 AppVeyor.Environment.Build.Folder,
                 AppVeyor.Environment.Build.Id,
                 AppVeyor.Environment.Build.Number,
-                AppVeyor.Environment.Build.Version
+                AppVeyor.Environment.Build.Version,
                 AppVeyor.Environment.Repository.Tag.IsTag,
                 AppVeyor.Environment.Repository.Tag.Name
                 );
@@ -60,16 +60,16 @@ Task("BuildInfo")
                 Version: {7}
                 IsTag: {8}
                 Tag Name: {9}",
-                TravisCI.Build.Branch,
-                TravisCI.Build.BuildDirectory,
-                TravisCI.Build.BuildId,
-                TravisCI.Build.Tag,
-                TravisCI.Build.TestResult,
-                TravisCI.Job.JobId,
-                TravisCI.Job.JobNumber,
-                TravisCI.Job.OSName,
-                TravisCI.Repository.Commit,
-                TravisCI.Repository.PullRequest
+                TravisCI.Environment.Build.Branch,
+                TravisCI.Environment.Build.BuildDirectory,
+                TravisCI.Environment.Build.BuildId,
+                TravisCI.Environment.Build.Tag,
+                TravisCI.Environment.Build.TestResult,
+                TravisCI.Environment.Job.JobId,
+                TravisCI.Environment.Job.JobNumber,
+                TravisCI.Environment.Job.OSName,
+                TravisCI.Environment.Repository.Commit,
+                TravisCI.Environment.Repository.PullRequest
                 );
         }
 
