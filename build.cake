@@ -17,7 +17,14 @@ var deployFile =
     AppVeyor.IsRunningOnAppVeyor ? "push.ps1" :
     TravisCI.IsRunningOnTravisCI ? "push.sh" : "push.ps1";
 
+Task("Changes")
+    .Does(() =>
+    {
+        PrintLastCommitChanges();
+    });
+
 Task("Build")
+    .IsDependentOn("Changes")
     .Does(() =>
     {
         Debug("Looking for build file with an identifier of -> " + buildFile);
