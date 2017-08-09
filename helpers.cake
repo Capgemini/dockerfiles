@@ -13,9 +13,11 @@ public List<string> GetLastCommitChanges(string checkFile)
 
     foreach(var gitDiffFile in gitDiffFiles)
     {
-        Debug("Following file has changed:" + gitDiffFile);
+        Debug("Following file has changed -> {0}", gitDiffFile);
 
-        if (gitDiffFile.Path.EndsWith(checkFile))
+        bool isDirectory = !string.IsNullOrWhiteSpace(System.IO.Path.GetDirectoryName(gitDiffFile.Path));
+
+        if (gitDiffFile.Path.EndsWith(checkFile) && isDirectory)
         {   
             cc.Add(gitDiffFile.Path);
         }
