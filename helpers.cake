@@ -4,7 +4,7 @@ public void PrintLastCommitChanges()
 {
     var lastCommit = GitLogTip(".");
 
-    Information("Last commit sha " + lastCommit.Sha);
+    Information("Last commit sha -> {0}", lastCommit.Sha);
 
     var gitDiffFiles = GitDiff(".", lastCommit.Sha);
 
