@@ -17,14 +17,67 @@ var deployFile =
     AppVeyor.IsRunningOnAppVeyor ? "push.ps1" :
     TravisCI.IsRunningOnTravisCI ? "push.sh" : "push.ps1";
 
-Task("Changes")
+Task("BuildInfo")
     .Does(() =>
     {
+        if (AppVeyor.IsRunningOnAppVeyor)
+        {
+            Information(
+                @"Repository:
+                Branch: {0}
+                Name: {1}
+                Provider: {2}
+                Scm: {3}
+                Folder: {4}
+                Id: {5}
+                Number: {6}
+                Version: {7}
+                IsTag: {8}
+                Tag Name: {9}",
+                AppVeyor.Environment.Repository.Branch,
+                AppVeyor.Environment.Repository.Name,
+                AppVeyor.Environment.Repository.Provider,
+                AppVeyor.Environment.Repository.Scm,
+                AppVeyor.Environment.Build.Folder,
+                AppVeyor.Environment.Build.Id,
+                AppVeyor.Environment.Build.Number,
+                AppVeyor.Environment.Build.Version
+                AppVeyor.Environment.Repository.Tag.IsTag,
+                AppVeyor.Environment.Repository.Tag.Name
+                );
+        }
+        else if (TravisCI.IsRunningOnTravisCI)
+        {
+            Information(
+                @"Repository:
+                Branch: {0}
+                BuildDirectory: {1}
+                BuildId: {2}
+                Tag: {3}
+                TestResult: {4}
+                Id: {5}
+                Number: {6}
+                Version: {7}
+                IsTag: {8}
+                Tag Name: {9}",
+                TravisCI.Build.Branch,
+                TravisCI.Build.BuildDirectory,
+                TravisCI.Build.BuildId,
+                TravisCI.Build.Tag,
+                TravisCI.Build.TestResult,
+                TravisCI.Job.JobId,
+                TravisCI.Job.JobNumber,
+                TravisCI.Job.OSName,
+                TravisCI.Repository.Commit,
+                TravisCI.Repository.PullRequest
+                );
+        }
+
         PrintLastCommitChanges();
     });
 
 Task("Build")
-    .IsDependentOn("Changes")
+    .IsDependentOn("BuildInfo")
     .Does(() =>
     {
         Debug("Looking for build file with an identifier of -> " + buildFile);
