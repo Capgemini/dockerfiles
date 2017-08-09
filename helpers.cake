@@ -1,5 +1,4 @@
 #addin nuget:?package=Cake.Git
-#addin nuget:?package=Cake.Powershell
 
 public List<string> GetLastCommitChanges(string checkFile)
 {
@@ -28,12 +27,16 @@ public List<string> GetLastCommitChanges(string checkFile)
 
 public void ExecuteScript(string scripto)
 {
+    var scriptRunner =
+        AppVeyor.IsRunningOnAppVeyor ? "powershell" :
+        TravisCI.IsRunningOnTravisCI ? "bash" : "powershell";
+
     Information("Starting to execute file -> {0}", scripto);
 
-    using(var process = StartAndReturnProcess(scripto))
+    using(var process = StartAndReturnProcess(scriptRunner, new ProcessSettings{ Arguments = scripto }))
     {
         process.WaitForExit();
-        // This should output 0 as valid arguments supplied
+
         Information("Exit code -> {0}", process.GetExitCode());
-    }    
+    }
 }
