@@ -1,19 +1,29 @@
 #addin nuget:?package=Cake.Git
 
+public void PrintLastCommitChanges()
+{
+    var lastCommit = GitLogTip(".");
+
+    Information("Last commit sha " + lastCommit.Sha);
+
+    var gitDiffFiles = GitDiff(".", lastCommit.Sha);
+
+    foreach(var gitDiffFile in gitDiffFiles)
+    {
+        Debug("File change detected -> {0}", gitDiffFile);
+    }
+}
+
 public List<string> GetLastCommitChanges(string checkFile)
 {
     List<string> cc = new List<string>();
 
     var lastCommit = GitLogTip(".");
 
-    Debug("Last commit sha "+ lastCommit.Sha);
-
     var gitDiffFiles = GitDiff(".", lastCommit.Sha);
 
     foreach(var gitDiffFile in gitDiffFiles)
     {
-        Debug("Following file has changed -> {0}", gitDiffFile);
-
         bool isDirectory = !string.IsNullOrWhiteSpace(System.IO.Path.GetDirectoryName(gitDiffFile.Path));
 
         if (gitDiffFile.Exists && gitDiffFile.Path.EndsWith(checkFile) && isDirectory)
