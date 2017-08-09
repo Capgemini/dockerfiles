@@ -14,8 +14,8 @@ var testFile =
 
 var deployFile =
     HasArgument("deployFile") ? Argument<string>("deployFile") :
-    AppVeyor.IsRunningOnAppVeyor ? "deploy.ps1" :
-    TravisCI.IsRunningOnTravisCI ? "deploy.sh" : "deploy.ps1";
+    AppVeyor.IsRunningOnAppVeyor ? "push.ps1" :
+    TravisCI.IsRunningOnTravisCI ? "push.sh" : "push.ps1";
 
 Task("Build")
     .Does(() =>

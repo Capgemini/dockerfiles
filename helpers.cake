@@ -17,7 +17,7 @@ public List<string> GetLastCommitChanges(string checkFile)
 
         bool isDirectory = !string.IsNullOrWhiteSpace(System.IO.Path.GetDirectoryName(gitDiffFile.Path));
 
-        if (gitDiffFile.Path.EndsWith(checkFile) && isDirectory)
+        if (gitDiffFile.Exists && gitDiffFile.Path.EndsWith(checkFile) && isDirectory)
         {   
             cc.Add(gitDiffFile.Path);
         }
