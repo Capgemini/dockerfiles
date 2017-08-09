@@ -10,7 +10,7 @@ public void PrintLastCommitChanges()
 
     foreach(var gitDiffFile in gitDiffFiles)
     {
-        Debug("File change detected -> {0}", gitDiffFile);
+        Information("File change detected -> {0}", gitDiffFile);
     }
 }
 
