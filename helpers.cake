@@ -30,9 +30,10 @@ public void ExecuteScript(string scripto)
 {
     Information("Starting to execute file -> {0}", scripto);
 
-    var resultCollection = StartPowershellFile(scripto);
-
-    var returnCode = int.Parse(resultCollection[0].BaseObject.ToString());
-
-    Information("Result -> {0}", returnCode);
+    using(var process = StartAndReturnProcess(scripto))
+    {
+        process.WaitForExit();
+        // This should output 0 as valid arguments supplied
+        Information("Exit code -> {0}", process.GetExitCode());
+    }    
 }
