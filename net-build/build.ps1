@@ -1,3 +1,1 @@
-Write-Host built!
-Write-Host built!
-Write-Host built!
+Write-Host Starting build stage - net-build...
