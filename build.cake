@@ -95,7 +95,22 @@ Task("Build")
         }
     });
 
+Task("Deploy")
+    .IsDependentOn("Build")
+    .Does(() =>
+    {
+        string [] subdirectoryEntries = System.IO.Directory.GetDirectories(".");
+
+        foreach(string directory in subdirectoryEntries)
+        {
+            ExecuteScript(new string[]
+            { 
+                directory + "/" + deployFile
+            });
+        }
+    });
+
 Task("Default")
-    .IsDependentOn("Build");
+    .IsDependentOn("Deploy");
 
 RunTarget(target);
