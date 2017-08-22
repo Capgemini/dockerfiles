@@ -48,22 +48,25 @@ public void ExecuteScript(string[] scripts)
 
     foreach(string script in scripts)        
     {
-        Information("Starting to execute file -> {0}", script);
-
-        int ec = 0;
-
-        using(var process = StartAndReturnProcess(scriptRunner, new ProcessSettings{ Arguments = script }))
+        if (System.IO.File.Exists(script))
         {
-            process.WaitForExit();
+            Information("Starting to execute file -> {0}", script);
 
-            Information("Exit code -> {0}", process.GetExitCode());
+            int ec = 0;
 
-            ec = process.GetExitCode();
-        }
+            using(var process = StartAndReturnProcess(scriptRunner, new ProcessSettings{ Arguments = script }))
+            {
+                process.WaitForExit();
 
-        if (ec != 0)
-        {
-            throw new Exception(String.Format("Running script {0} exited with non-zero return code {1}", script, ec));   
+                Information("Exit code -> {0}", process.GetExitCode());
+
+                ec = process.GetExitCode();
+            }
+
+            if (ec != 0)
+            {
+                throw new Exception(String.Format("Running script {0} exited with non-zero return code {1}", script, ec));   
+            }
         }
     }
 }
