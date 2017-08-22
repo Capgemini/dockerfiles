@@ -50,11 +50,20 @@ public void ExecuteScript(string[] scripts)
     {
         Information("Starting to execute file -> {0}", script);
 
+        int ec = 0;
+
         using(var process = StartAndReturnProcess(scriptRunner, new ProcessSettings{ Arguments = script }))
         {
             process.WaitForExit();
 
             Information("Exit code -> {0}", process.GetExitCode());
+
+            ec = process.GetExitCode();
+        }
+
+        if (ec != 0)
+        {
+            throw new Exception(String.Format("Running script {0} exited with non-zero return code {1}", script, ec));   
         }
     }
 }
