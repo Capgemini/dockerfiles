@@ -82,43 +82,20 @@ Task("Build")
     {
         Debug("Looking for build file with an identifier of -> " + buildFile);
 
-        var files = GetLastCommitChanges(buildFile);
+        var dockerDirectories = GetLastCommitChanges(buildFile);
 
-        foreach(var f in files)
+        foreach(var dd in dockerDirectories)
         {
-            ExecuteScript(f);
-        }
-    });
-
-Task("Test")
-    .IsDependentOn("Build")
-    .Does(() =>
-    {
-        Debug("Looking for test file with an identifier of -> " + testFile);
-
-        var files = GetLastCommitChanges(testFile);
-
-        foreach(var f in files)
-        {
-            ExecuteScript(f);
-        }
-    });
-
-Task("Deploy")
-    .IsDependentOn("Test")
-    .Does(() =>
-    {
-        Debug("Looking for depoy file with an identifier of -> " + deployFile);
-
-        var files = GetLastCommitChanges(deployFile);
-
-        foreach(var f in files)
-        {
-            ExecuteScript(f);
+            ExecuteScript(new string[]
+            { 
+                dd + "/" + buildFile,
+                dd + "/" + testFile,
+                dd + "/" + deployFile
+            });
         }
     });
 
 Task("Default")
-    .IsDependentOn("Deploy");
+    .IsDependentOn("Build");
 
 RunTarget(target);

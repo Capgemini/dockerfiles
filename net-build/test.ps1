@@ -1,1 +1,1 @@
-Write-Host No tests!
+Write-Host No tests :/
