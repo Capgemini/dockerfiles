@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop';
 
 Write-Host Starting build stage - net-build...
 
-# build the base image
+# build base image
 docker build -t idevcr.azurecr.io/net-build -f net-build/Dockerfile .
 
 if($LastExitCode -ne 0) { $host.SetShouldExit($LastExitCode )  }

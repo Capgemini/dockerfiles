@@ -89,8 +89,7 @@ Task("Build")
             ExecuteScript(new string[]
             { 
                 dd + "/" + buildFile,
-                dd + "/" + testFile,
-                dd + "/" + deployFile
+                dd + "/" + testFile
             });
         }
     });
