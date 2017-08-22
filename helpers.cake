@@ -26,27 +26,35 @@ public List<string> GetLastCommitChanges(string checkFile)
     {
         bool isDirectory = !string.IsNullOrWhiteSpace(System.IO.Path.GetDirectoryName(gitDiffFile.Path));
 
-        if (gitDiffFile.Exists && gitDiffFile.Path.EndsWith(checkFile) && isDirectory)
-        {   
-            cc.Add(gitDiffFile.Path);
+        if (isDirectory)
+        {
+            string dockerDirectory = System.IO.Path.GetDirectoryName(gitDiffFile.Path);
+
+            if (!cc.Contains(dockerDirectory))
+            {
+                cc.Add(dockerDirectory);
+            }
         }
     }
 
     return cc;
 }
 
-public void ExecuteScript(string scripto)
+public void ExecuteScript(string[] scripts)
 {
     var scriptRunner =
         AppVeyor.IsRunningOnAppVeyor ? "powershell" :
         TravisCI.IsRunningOnTravisCI ? "bash" : "powershell";
 
-    Information("Starting to execute file -> {0}", scripto);
-
-    using(var process = StartAndReturnProcess(scriptRunner, new ProcessSettings{ Arguments = scripto }))
+    foreach(string script in scripts)        
     {
-        process.WaitForExit();
+        Information("Starting to execute file -> {0}", script);
 
-        Information("Exit code -> {0}", process.GetExitCode());
+        using(var process = StartAndReturnProcess(scriptRunner, new ProcessSettings{ Arguments = script }))
+        {
+            process.WaitForExit();
+
+            Information("Exit code -> {0}", process.GetExitCode());
+        }
     }
 }

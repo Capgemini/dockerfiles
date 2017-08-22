@@ -1,6 +1,12 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 
+environment:
+  DOCKER_USER:
+    secure: YdJ6kEjDJH1xTWD5NQt5G+xRSjdEnO8iLqnDUIWqGOs6j36gJQmB4B21qJY96zjw
+  DOCKER_PASS:
+    secure: cSFFt01B7Qy5w3ilRrNaf1X7NdKAMJE7P1HzJV9ie9C5lDBAE9wGWQyEgcBexXir
+
 install:
   - ps: Write-Host Server version $(gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').BuildLabEx
   - docker version
