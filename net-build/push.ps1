@@ -7,9 +7,6 @@ if (! (Test-Path Env:\APPVEYOR_REPO_TAG_NAME)) {
 
 Write-Host Starting push stage - net-build...
 
-# invoke the build for container re-build
-./build.ps1
-
 # log on to docker
 docker login $env:DOCKER_REGISTRY -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
 
