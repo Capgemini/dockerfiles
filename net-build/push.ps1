@@ -11,7 +11,7 @@ Write-Host Starting push stage - net-build...
 docker login $env:DOCKER_REGISTRY -u="$env:DOCKER_USER" -p="$env:DOCKER_PASS"
 
 # tag with the build number
-docker tag idevcr.azurecr.io/net-build idevcr.azurecr.io/net-build:$env:APPVEYOR_REPO_TAG_NAME
+docker tag $env:DOCKER_REGISTRY/net-build $env:DOCKER_REGISTRY/net-build:$env:APPVEYOR_REPO_TAG_NAME
 
 # push to registry 
-docker push idevcr.azurecr.io/net-build:$env:APPVEYOR_REPO_TAG_NAME
+docker push $env:DOCKER_REGISTRY/net-build:$env:APPVEYOR_REPO_TAG_NAME
