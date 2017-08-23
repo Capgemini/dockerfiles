@@ -89,27 +89,13 @@ Task("Build")
             ExecuteScript(new string[]
             { 
                 dd + "/" + buildFile,
-                dd + "/" + testFile
-            });
-        }
-    });
-
-Task("Deploy")
-    .IsDependentOn("Build")
-    .Does(() =>
-    {
-        string [] subdirectoryEntries = System.IO.Directory.GetDirectories(".");
-
-        foreach(string directory in subdirectoryEntries)
-        {
-            ExecuteScript(new string[]
-            { 
-                directory + "/" + deployFile
+                dd + "/" + testFile,
+                dd + "/" + deployFile
             });
         }
     });
 
 Task("Default")
-    .IsDependentOn("Deploy");
+    .IsDependentOn("Build");
 
 RunTarget(target);
