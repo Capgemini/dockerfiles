@@ -2,7 +2,8 @@ FROM microsoft/windowsservercore:latest
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-ENV NUGET_DOWNLOAD_URL https://dist.nuget.org/win-x86-commandline/latest/nuget.exe
-
 ENV BOOTSTRAP_DOWNLOAD_URL https://jsacapdevdata.blob.core.windows.net/artifacts/vs.exe
 
+RUN Invoke-WebRequest $Env:BOOTSTRAP_DOWNLOAD_URL -OutFile vs.exe -UseBasicParsing; \
+    Start-Process vs.exe -ArgumentList '--add Microsoft.VisualStudio.Workload.MSBuildTools --includeRecommended --includeOptional --quiet' -Wait; \
+    Remove-Item -Force vs.exe
