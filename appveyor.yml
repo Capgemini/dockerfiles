@@ -1,7 +1,6 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 
-
 environment:
   DOCKER_USER:
     secure: WiNRm6G//OtBaMDCSnmXig==
@@ -12,7 +11,6 @@ init:
   - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 install:
-  - ps: Write-Host Server version $(gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').BuildLabEx
   - docker version
 
 build_script:
