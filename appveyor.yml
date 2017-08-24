@@ -1,6 +1,7 @@
 version: 1.0.{build}
 image: Visual Studio 2017
 
+
 environment:
   DOCKER_USER:
     secure: WiNRm6G//OtBaMDCSnmXig==
