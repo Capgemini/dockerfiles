@@ -7,6 +7,9 @@ environment:
   DOCKER_PASS:
     secure: 0ymXpkVnG1Tu6B/eO/O/Hg==
 
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
 install:
   - ps: Write-Host Server version $(gp 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion').BuildLabEx
   - docker version
