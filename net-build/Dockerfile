@@ -5,10 +5,13 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 # Visual Studio bootstrap
 ENV BOOTSTRAP_DOWNLOAD_URL https://jsacapdevdata.blob.core.windows.net/artifacts/vs.exe
 
-# .NET Core SDK
+# dotnet core SDK
 ENV DOTNET_SDK_VERSION 2.0.0
 ENV DOTNET_SDK_DOWNLOAD_URL https://dotnetcli.blob.core.windows.net/dotnet/Sdk/$DOTNET_SDK_VERSION/dotnet-sdk-$DOTNET_SDK_VERSION-win-x64.zip
 ENV DOTNET_SDK_DOWNLOAD_SHA C0942299437541C6B173F71213B43D2CC1E0EBC5C75F78948C0C6279A8D1C5B293999C93863392A4219F819B1DDD73D95112930B08EC8DDAA89918931E492DB0
+
+# net framework developer packs
+ENV NET_DP_47 https://download.microsoft.com/download/A/1/D/A1D07600-6915-4CB8-A931-9A980EF47BB7/NDP47-DevPack-KB3186612-ENU.exe
 
 # install build tools
 RUN Invoke-WebRequest $Env:BOOTSTRAP_DOWNLOAD_URL -OutFile vs.exe -UseBasicParsing; \
